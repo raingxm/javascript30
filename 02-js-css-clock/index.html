@@ -68,7 +68,26 @@
 </style>
 
 <script>
-    
+    let hourHand = document.querySelector('.hour-hand');
+    let minuteHand = document.querySelector('.min-hand');
+    let sencondHand = document.querySelector('.second-hand');
+
+    function renderTime(hour, minute, seconds) {
+        let hourDegree = hour * 360 / 12,
+            minuteDegree = minute * 360 / 60,
+            secondDegree = seconds * 360 / 60;
+        hourHand.style.webkitTransform = `rotate(${90 + hourDegree}deg)`;
+        minuteHand.style.webkitTransform = `rotate(${90 + minuteDegree}deg)`;
+        sencondHand.style.webkitTransform = `rotate(${90 + secondDegree}deg)`;
+    }
+
+    setInterval(function(){
+        let current = new Date();
+        let hour = current.getHours() % 12;
+        let minute = current.getMinutes();
+        let second = current.getSeconds();
+        renderTime(hour, minute, second);
+    }, 1000)
 </script>
 </body>
 
