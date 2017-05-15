@@ -73,17 +73,17 @@
     let sencondHand = document.querySelector('.second-hand');
 
     function renderTime(hour, minute, seconds) {
-        let hourDegree = hour * 360 / 12,
-            minuteDegree = minute * 360 / 60,
-            secondDegree = seconds * 360 / 60;
-        hourHand.style.webkitTransform = `rotate(${90 + hourDegree}deg)`;
-        minuteHand.style.webkitTransform = `rotate(${90 + minuteDegree}deg)`;
-        sencondHand.style.webkitTransform = `rotate(${90 + secondDegree}deg)`;
+        let hourDegree = hour * 360 / 12 + 90,
+            minuteDegree = minute * 360 / 60 + 90,
+            secondDegree = seconds * 360 / 60 + 90;
+        hourHand.style.webkitTransform = `rotate(${hourDegree}deg)`;
+        minuteHand.style.webkitTransform = `rotate(${minuteDegree}deg)`;
+        sencondHand.style.webkitTransform = `rotate(${secondDegree}deg)`;
     }
 
     setInterval(function(){
         let current = new Date();
-        let hour = current.getHours() % 12;
+        let hour = current.getHours();
         let minute = current.getMinutes();
         let second = current.getSeconds();
         renderTime(hour, minute, second);
