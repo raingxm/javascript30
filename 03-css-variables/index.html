@@ -63,7 +63,20 @@
 <img src="https://source.unsplash.com/800x500">
 
 <script>
+    const inputs = document.querySelectorAll('input');
+    let body = document.querySelector('body');
 
+    inputs.forEach(ele => {
+        ele.addEventListener('change', function(e){
+            if (e.target.getAttribute('name') === "padding") {
+                body.style.setProperty("--padding", e.target.value + "px")
+            } else if(e.target.getAttribute('name') === "blur") {
+                body.style.setProperty("--blur", e.target.value + "px")
+            } else if(e.target.getAttribute('name') === "base") {
+                body.style.setProperty("--base", e.target.value)
+            }
+        })
+    })
 </script>
 </body>
 </html>
